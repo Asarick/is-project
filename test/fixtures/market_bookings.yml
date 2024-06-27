@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  market: one
+  user: one
+  date: 2024-06-27
+  special_requirements: MyText
+
+two:
+  market: two
+  user: two
+  date: 2024-06-27
+  special_requirements: MyText

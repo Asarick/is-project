@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_27_080839) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_085519) do
   create_table "crops", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -51,10 +51,41 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_080839) do
     t.index ["premium_type_id"], name: "index_insurances_on_premium_type_id"
   end
 
+  create_table "market_bookings", force: :cascade do |t|
+    t.integer "market_id", null: false
+    t.integer "user_id", null: false
+    t.date "date"
+    t.text "special_requirements"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_market_bookings_on_market_id"
+    t.index ["user_id"], name: "index_market_bookings_on_user_id"
+  end
+
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "open_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "premium_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "quantity"
+    t.string "image_url"
+    t.string "location"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_080839) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
@@ -69,4 +101,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_27_080839) do
   add_foreign_key "insurances", "farmers"
   add_foreign_key "insurances", "insurance_packages"
   add_foreign_key "insurances", "premium_types"
+  add_foreign_key "market_bookings", "markets"
+  add_foreign_key "market_bookings", "users"
+  add_foreign_key "products", "users"
 end

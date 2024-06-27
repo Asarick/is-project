@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :insurance_packages, only: [:index]
       resources :premium_types, only: [:index]
       resources :insurances, only: [:create, :show]
+      resources :products
+      resources :markets, only: [:index, :show]
+      resources :market_bookings, only: [:create, :index, :show]
 
       resources :user, only: [:post, :delete]
       post '/api/signup', to: 'users#create'

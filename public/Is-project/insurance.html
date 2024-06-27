@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Crop Insurance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f8e9;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #4caf50;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .main-content {
+            flex: 1;
+            padding-top: 60px;
+        }
+        .container {
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-color: #4caf50;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .footer-heading {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .footer-content {
+            font-size: 0.9em;
+        }
+        .social-icons {
+            font-size: 1.5em;
+        }
+        .social-icons a {
+            color: white;
+            margin-right: 10px;
+        }
+        #insuranceDocument {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AgriConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market.html">Market Access</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="insurance.html">Crop Insurance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h1 class="text-center mb-4">Crop Insurance Application</h1>
+            <div id="greeting" class="text-center mb-3"></div>
+            <div id="datetime" class="text-center mb-4"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Insurance Application Form</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="insuranceForm">
+                                <div class="mb-3">
+                                    <label for="farmerName" class="form-label">Farmer Name</label>
+                                    <input type="text" class="form-control" id="farmerName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cropType" class="form-label">Crop Type</label>
+                                    <select class="form-select" id="cropType" required>
+                                        <option value="">Select crop type</option>
+                                        <option value="Maize">Maize</option>
+                                        <option value="Wheat">Wheat</option>
+                                        <option value="Rice">Rice</option>
+                                        <option value="Coffee">Coffee</option>
+                                        <option value="Tea">Tea</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="acreage" class="form-label">Acreage</label>
+                                    <input type="number" class="form-control" id="acreage" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="insurancePackage" class="form-label">Insurance Package</label>
+                                    <select class="form-select" id="insurancePackage" required>
+                                        <option value="">Select package</option>
+                                        <option value="Basic">Basic</option>
+                                        <option value="Standard">Standard</option>
+                                        <option value="Premium">Premium</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="premiumType" class="form-label">Premium Type</label>
+                                    <select class="form-select" id="premiumType" required>
+                                        <option value="">Select premium type</option>
+                                        <option value="Annual">Annual</option>
+                                        <option value="Semi-Annual">Semi-Annual</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                    </select>
+                                </div>
+                                <!-- Payment details placeholder -->
+                                <!-- <div class="mb-3">
+                                    <label for="paymentMethod" class="form-label">Payment Method</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="">Select payment method</option>
+                                        <option value="CreditCard">Credit Card</option>
+                                        <option value="MobileMoney">Mobile Money</option>
+                                        <option value="BankTransfer">Bank Transfer</option>
+                                    </select>
+                                </div> -->
+                                <button type="submit" class="btn btn-success">Apply for Insurance</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Insurance Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="insuranceDetails"></div>
+                            <div id="insuranceDocument" class="mt-4">
+                                <h4>Insurance Document</h4>
+                                <div id="documentContent" class="border p-3"></div>
+                                <button id="printButton" class="btn btn-primary mt-3">Print Insurance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="footer-heading">About AgriConnect</h5>
+                    <p class="footer-content">Empowering farmers with technology, market access, and financial security since 2024.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-white">FAQs</a></li>
+                        <li><a href="#" class="text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="contact.html" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <p class="footer-content">Stay updated with our latest news and offers:</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="background-color: white;">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="footer-content">&copy; 2024 AgriConnect. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_BASE_URL = 'http://localhost:3000'; // Update this with your actual API URL
+
+        // Function to get greeting based on time of day
+        function getGreeting(userName) {
+            const hour = new Date().getHours();
+            if (hour < 12) return `Good morning, ${userName}!`;
+            if (hour < 18) return `Good afternoon, ${userName}!`;
+            return `Good evening, ${userName}!`;
+        }
+
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString();
+        }
+
+        // Fetch farmer data and set greeting
+        async function fetchFarmerAndSetGreeting() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/farmers/1`); // Assuming farmer ID 1 for simplicity
+                if (!response.ok) throw new Error('Failed to fetch farmer data');
+                const farmer = await response.json();
+                document.getElementById('greeting').textContent = getGreeting(farmer.name);
+            } catch (error) {
+                console.error('Error fetching farmer data:', error);
+                document.getElementById('greeting').textContent = getGreeting('Farmer');
+            }
+        }
+
+        // Fetch and populate crop types
+        async function populateCropTypes() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/crops`);
+                if (!response.ok) throw new Error('Failed to fetch crop types');
+                const crops = await response.json();
+                const cropSelect = document.getElementById('cropType');
+                cropSelect.innerHTML = '<option value="">Select crop type</option>';
+                crops.forEach(crop => {
+                    cropSelect.innerHTML += `<option value="${crop.id}">${crop.name}</option>`;
+                });
+            } catch (error) {
+                console.error('Error fetching crop types:', error);
+            }
+        }
+
+        // Fetch and populate insurance packages
+        async function populateInsurancePackages() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/insurance_packages`);
+                if (!response.ok) throw new Error('Failed to fetch insurance packages');
+                const packages = await response.json();
+                const packageSelect = document.getElementById('insurancePackage');
+                packageSelect.innerHTML = '<option value="">Select package</option>';
+                packages.forEach(pkg => {
+                    packageSelect.innerHTML += `<option value="${pkg.id}">${pkg.name}</option>`;
+                });
+            } catch (error) {
+                console.error('Error fetching insurance packages:', error);
+            }
+        }
+
+        // Fetch and populate premium types
+        async function populatePremiumTypes() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/premium_types`);
+                if (!response.ok) throw new Error('Failed to fetch premium types');
+                const types = await response.json();
+                const typeSelect = document.getElementById('premiumType');
+                typeSelect.innerHTML = '<option value="">Select premium type</option>';
+                types.forEach(type => {
+                    typeSelect.innerHTML += `<option value="${type.id}">${type.name}</option>`;
+                });
+            } catch (error) {
+                console.error('Error fetching premium types:', error);
+            }
+        }
+
+        // Initialize page
+        function initPage() {
+            fetchFarmerAndSetGreeting();
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            populateCropTypes();
+            populateInsurancePackages();
+            populatePremiumTypes();
+        }
+
+        // Call initPage when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', initPage);
+
+        // Insurance application form submission
+        document.getElementById('insuranceForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const farmerId = 1; // Assuming farmer ID 1 for simplicity
+            const cropId = document.getElementById('cropType').value;
+            const acreage = document.getElementById('acreage').value;
+            const insurancePackageId = document.getElementById('insurancePackage').value;
+            const premiumTypeId = document.getElementById('premiumType').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/insurances`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        insurance: {
+                            farmer_id: farmerId,
+                            crop_id: cropId,
+                            acreage: acreage,
+                            insurance_package_id: insurancePackageId,
+                            premium_type_id: premiumTypeId,
+                            start_date: new Date().toISOString().split('T')[0],
+                            end_date: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
+                        }
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Failed to create insurance');
+                const insurance = await response.json();
+
+                // Display insurance details
+                displayInsuranceDetails(insurance);
+            } catch (error) {
+                console.error('Error creating insurance:', error);
+                alert('Failed to create insurance. Please try again.');
+            }
+        });
+
+        function displayInsuranceDetails(insurance) {
+            const insuranceDetails = document.getElementById('insuranceDetails');
+            insuranceDetails.innerHTML = `
+                <h4>Insurance Application Summary</h4>
+                <p><strong>Policy Number:</strong> ${insurance.policy_number}</p>
+                <p><strong>Farmer Name:</strong> ${insurance.farmer.name}</p>
+                <p><strong>Crop Type:</strong> ${insurance.crop.name}</p>
+                <p><strong>Acreage:</strong> ${insurance.acreage}</p>
+                <p><strong>Insurance Package:</strong> ${insurance.insurance_package.name}</p>
+                <p><strong>Premium Type:</strong> ${insurance.premium_type.name}</p>
+                <p><strong>Total Premium:</strong> KES ${insurance.total_premium.toFixed(2)}</p>
+                <p><strong>Start Date:</strong> ${new Date(insurance.start_date).toLocaleDateString()}</p>
+                <p><strong>End Date:</strong> ${new Date(insurance.end_date).toLocaleDateString()}</p>
+            `;
+
+            // Generate and display insurance document
+            const documentContent = document.getElementById('documentContent');
+            documentContent.innerHTML = `
+                <h5>Crop Insurance Policy</h5>
+                <p><strong>Policy Number:</strong> ${insurance.policy_number}</p>
+                <p><strong>Farmer Name:</strong> ${insurance.farmer.name}</p>
+                <p><strong>Crop Insured:</strong> ${insurance.crop.name}</p>
+                <p><strong>Insured Acreage:</strong> ${insurance.acreage}</p>
+                <p><strong>Insurance Package:</strong> ${insurance.insurance_package.name}</p>
+                <p><strong>Premium Type:</strong> ${insurance.premium_type.name}</p>
+                <p><strong>Total Premium:</strong> KES ${insurance.total_premium.toFixed(2)}</p>
+                <p><strong>Policy Start Date:</strong> ${new Date(insurance.start_date).toLocaleDateString()}</p>
+                <p><strong>Policy End Date:</strong> ${new Date(insurance.end_date).toLocaleDateString()}</p>
+                <p>This document certifies that the above-mentioned farmer is insured under our Crop Insurance Program, subject to the terms and conditions of the policy.</p>
+            `;
+
+            document.getElementById('insuranceDocument').style.display = 'block';
+        }
+
+        // Print functionality
+        document.getElementById('printButton').addEventListener('click', function() {
+            const printContent = document.getElementById('documentContent').innerHTML;
+            const originalContent = document.body.innerHTML;
+            document.body.innerHTML = printContent;
+            window.print();
+            document.body.innerHTML = originalContent;
+            location.reload(); // Reload the page after printing
+        });
+    </script>
+</body>
+</html>

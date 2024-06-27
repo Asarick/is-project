@@ -1,0 +1,92 @@
+<!-- // const API_URL = 'http://localhost:3000';  // Replace with your Rails server URL
+
+// document.getElementById('signup-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     const name = document.getElementById('signup-name').value;
+//     const email = document.getElementById('signup-email').value;
+//     const password = document.getElementById('signup-password').value;
+
+//     fetch(`${API_URL}/api/signup`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ user: { name, email, password } }),
+//         credentials: 'include'
+//     })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             if (data.success) {
+//                 alert('Account created successfully!');
+//                 window.location.href = 'home.html';
+//             } else {
+//                 alert(data.errors ? data.errors.join(', ') : 'Sign up failed. Please check your information and try again.');
+//             }
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//             alert('An error occurred during sign up. Please try again later.');
+//         });
+// });
+// document.getElementById('login-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     const email = document.getElementById('login-email').value;
+//     const password = document.getElementById('login-password').value;
+
+//     fetch(`${API_URL}/api/login`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email, password }),
+//         credentials: 'include'
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 window.location.href = 'home.html';
+//             } else {
+//                 alert('Incorrect email or password. Please try again.');
+//             }
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//             alert('An error occurred during login. Please try again.');
+//         });
+// }); -->
+
+<!-- 
+function getDailyQuote() {
+    const today = new Date().toDateString();
+    const savedQuote = localStorage.getItem('dailyQuote');
+    const savedDate = localStorage.getItem('quoteDate');
+
+    if (savedQuote && savedDate === today) {
+        return savedQuote;
+    } else {
+        const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        localStorage.setItem('dailyQuote', newQuote);
+        localStorage.setItem('quoteDate', today);
+        return newQuote;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('greeting').textContent = getGreeting();
+    document.getElementById('daily-quote').textContent = getDailyQuote();
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    const welcomeSection = document.querySelector('.welcome-section');
+    welcomeSection.addEventListener('mouseover', () => {
+        welcomeSection.style.backgroundColor = '#f8f9fa';
+    });
+    welcomeSection.addEventListener('mouseout', () => {
+        welcomeSection.style.backgroundColor = '#ffffff';
+    });
+}); -->

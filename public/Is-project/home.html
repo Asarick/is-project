@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Empowering Farmers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f8e9;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #4caf50;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .main-content {
+            flex: 1;
+            padding-top: 60px;
+        }
+        .container {
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+        .welcome-section, .quote-section, .info-section {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .welcome-heading {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        .welcome-subheading {
+            color: #558b2f;
+            margin-bottom: 30px;
+        }
+        #greeting {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #33691e;
+        }
+        .info-heading {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        .info-content {
+            color: #33691e;
+        }
+        #datetime {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #558b2f;
+        }
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .footer-heading {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .footer-content {
+            font-size: 0.9em;
+        }
+        .social-icons {
+            font-size: 1.5em;
+        }
+        .social-icons a {
+            color: white;
+            margin-right: 10px;
+        }
+        .quote-section {
+            background-color: #e8f5e9;
+        }
+        #daily-quote {
+            font-style: italic;
+            color: #2e7d32;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AgriConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market.html">Market Access</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insurance.html">Crop Insurance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="welcome-section">
+                <div id="greeting"></div>
+                <h1 class="welcome-heading">Welcome to AgriConnect!</h1>
+                <h3 class="welcome-subheading">Empowering Local Farmers with Market Access and Affordable Crop Insurance</h3>
+                <p>AgriConnect is your one-stop platform for agricultural success. We're here to support local farmers by providing essential resources and connections.</p>
+            </div>
+
+            <div class="quote-section">
+                <p id="daily-quote"></p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info-section">
+                        <h2 class="info-heading">Market Access</h2>
+                        <p class="info-content">
+                            Gain direct access to local and international markets:
+                            <ul>
+                                <li>Connect with buyers and distributors</li>
+                                <li>Get real-time price information</li>
+                                <li>Participate in online auctions</li>
+                                <li>Access transportation and logistics support</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-section">
+                        <h2 class="info-heading">Affordable Crop Insurance</h2>
+                        <p class="info-content">
+                            Protect your harvest with our tailored insurance plans:
+                            <ul>
+                                <li>Weather-indexed insurance options</li>
+                                <li>Flexible premium payment schedules</li>
+                                <li>Quick and fair claim settlements</li>
+                                <li>Risk assessment and management advice</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="datetime"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="footer-heading">About AgriConnect</h5>
+                    <p class="footer-content">Empowering farmers with technology, market access, and financial security since 2024.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-white">FAQs</a></li>
+                        <li><a href="#" class="text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="contact.html" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <p class="footer-content">Stay updated with our latest news and offers:</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="background-color: white;">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="footer-content">&copy; 2024 AgriConnect. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function getGreeting() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        const userName = currentUser.name || 'Farmer';
+        const hour = new Date().getHours();
+        if (hour < 12) return `Good morning, ${userName}!`;
+        if (hour < 18) return `Good afternoon, ${userName}!`;
+        return `Good evening, ${userName}!`;
+    }
+
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById('datetime').textContent = now.toLocaleString();
+    }
+
+    const quotes = [
+        "The only way to do great work is to love what you do. - Steve Jobs",
+        "Believe you can and you're halfway there. - Theodore Roosevelt",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
+        "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+        "Strive not to be a success, but rather to be of value. - Albert Einstein",
+        "The unexamined life is not worth living for a human being. - Socrates",
+        "I think, therefore I am. This proposition is so certain that it cannot be shaken by any of the most extravagant suppositions of the skeptics. - René Descartes",
+        "To be is to be perceived; therefore, let us live in the presence of one another, making the best of our social instincts. - George Berkeley",
+        "He who has a why to live can bear almost any how. This is the core of strength within each individual, driving them forward in life. - Friedrich Nietzsche",
+        "Man is condemned to be free; because once thrown into the world, he is responsible for everything he does. - Jean-Paul Sartre",
+        "Happiness is not an ideal of reason but of imagination. We shape our happiness through the power of our thoughts and dreams. - Immanuel Kant",
+        "We are what we repeatedly do. Excellence, then, is not an act, but a habit that defines our character. - Aristotle",
+        "That which does not kill us makes us stronger. The trials and tribulations we face build our resilience and fortitude. - Friedrich Nietzsche"
+    ];
+
+    function getRandomQuote() {
+    return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function updateQuote() {
+    const quoteElement = document.getElementById('daily-quote');
+    quoteElement.style.opacity = 0;
+    setTimeout(() => {
+        quoteElement.textContent = getRandomQuote();
+        quoteElement.style.opacity = 1;
+    }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('greeting').textContent = getGreeting();
+    updateQuote(); // Initial quote
+    updateDateTime();
+    
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+    
+    // Change quote every minute
+    setInterval(updateQuote, 60000);
+
+    const welcomeSection = document.querySelector('.welcome-section');
+    welcomeSection.addEventListener('mouseover', () => {
+        welcomeSection.style.backgroundColor = '#f8f9fa';
+    });
+    welcomeSection.addEventListener('mouseout', () => {
+        welcomeSection.style.backgroundColor = '#ffffff';
+    });
+});
+    </script>
+</body>
+</html>

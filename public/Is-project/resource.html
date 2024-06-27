@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f8e9;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #4caf50;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .main-content {
+            flex: 1;
+            padding-top: 60px;
+        }
+        .container {
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-color: #4caf50;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .footer-heading {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .footer-content {
+            font-size: 0.9em;
+        }
+        .social-icons {
+            font-size: 1.5em;
+        }
+        .social-icons a {
+            color: white;
+            margin-right: 10px;
+        }
+        #weatherWidget {
+            background-color: #e8f5e9;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        .blog-post {
+            margin-bottom: 20px;
+        }
+        .event-item {
+            margin-bottom: 15px;
+        }
+        #marketPrices {
+            height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AgriConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market.html">Market Access</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="insurance.html">Crop Insurance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h1 class="text-center mb-4">Agricultural Resources</h1>
+            <div id="greeting" class="text-center mb-3"></div>
+            <div id="datetime" class="text-center mb-4"></div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Weather Insights</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="weatherWidget">
+                                <h6>Current Weather</h6>
+                                <p id="currentWeather">Loading...</p>
+                                <h6>5-Day Forecast</h6>
+                                <div id="forecast"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Agricultural Blogs</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="blogPosts"></div>
+                            <button class="btn btn-success mt-3" id="loadMoreBlogs">Load More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Upcoming Events</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="eventsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Market Prices</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="marketPrices"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Farming Tips</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="farmingTips"></div>
+                            <button class="btn btn-success mt-3" id="newTip">New Tip</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="footer-heading">About AgriConnect</h5>
+                    <p class="footer-content">Empowering farmers with technology, market access, and financial security since 2024.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-white">FAQs</a></li>
+                        <li><a href="#" class="text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="contact.html" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <p class="footer-content">Stay updated with our latest news and offers:</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="background-color: white;">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="footer-content">&copy; 2024 AgriConnect. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to get greeting based on time of day
+        function getGreeting() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const userName = currentUser.name || 'Farmer';
+            const hour = new Date().getHours();
+            if (hour < 12) return `Good morning, ${userName}!`;
+            if (hour < 18) return `Good afternoon, ${userName}!`;
+            return `Good evening, ${userName}!`;
+        }
+
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString();
+        }
+
+        // Set initial greeting and start updating date/time
+        document.getElementById('greeting').textContent = getGreeting();
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Simulated weather data
+        function updateWeather() {
+            const weatherConditions = ['Sunny', 'Partly Cloudy', 'Cloudy', 'Rainy', 'Thunderstorms'];
+            const currentCondition = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
+            const temperature = Math.floor(Math.random() * (35 - 15 + 1)) + 15; // Random temperature between 15°C and 35°C
+
+            document.getElementById('currentWeather').innerHTML = `
+                <p>${currentCondition}, ${temperature}°C</p>
+                <p>Humidity: ${Math.floor(Math.random() * 100)}%</p>
+                <p>Wind: ${Math.floor(Math.random() * 30)} km/h</p>
+            `;
+
+            let forecastHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                const forecastCondition = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
+                const forecastTemp = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
+                forecastHtml += `<p>Day ${i}: ${forecastCondition}, ${forecastTemp}°C</p>`;
+            }
+            document.getElementById('forecast').innerHTML = forecastHtml;
+        }
+
+        // Simulated blog posts
+        const blogPosts = [
+            { title: "Sustainable Farming Practices", excerpt: "Learn about eco-friendly farming methods that can increase your yield while protecting the environment." },
+            { title: "Crop Rotation Strategies", excerpt: "Discover how to implement effective crop rotation to improve soil health and reduce pest problems." },
+            { title: "Water Conservation Techniques", excerpt: "Explore innovative ways to conserve water in your agricultural practices." },
+            { title: "Organic Pest Control", excerpt: "Find out about natural methods to control pests without harmful chemicals." },
+            { title: "Soil Health Management", excerpt: "Learn the importance of maintaining soil health and techniques to improve soil quality." },
+            { title: "Climate-Smart Agriculture", excerpt: "Understand how to adapt your farming practices to changing climate conditions." }
+        ];
+
+        function loadBlogPosts() {
+            const blogContainer = document.getElementById('blogPosts');
+            blogContainer.innerHTML = '';
+            blogPosts.slice(0, 3).forEach(post => {
+                blogContainer.innerHTML += `
+                    <div class="blog-post">
+                        <h6>${post.title}</h6>
+                        <p>${post.excerpt}</p>
+                        <a href="#" class="btn btn-sm btn-outline-success">Read More</a>
+                    </div>
+                `;
+            });
+        }
+
+        // Simulated upcoming events
+        const events = [
+            { name: "Annual Farmers' Market", date: "2024-07-15", location: "City Center" },
+            { name: "Agricultural Technology Expo", date: "2024-08-22", location: "Convention Center" },
+            { name: "Organic Farming Workshop", date: "2024-09-05", location: "Community Hall" },
+            { name: "Crop Disease Management Seminar", date: "2024-10-10", location: "Agricultural University" }
+        ];
+
+        function loadEvents() {
+            const eventsContainer = document.getElementById('eventsList');
+            eventsContainer.innerHTML = '';
+            events.forEach(event => {
+                eventsContainer.innerHTML += `
+                    <div class="event-item">
+                        <h6>${event.name}</h6>
+                        <p>Date: ${event.date}</p>
+                        <p>Location: ${event.location}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // Simulated market prices
+        const crops = ['Maize', 'Wheat', 'Rice', 'Potatoes', 'Tomatoes', 'Onions', 'Cabbage', 'Carrots'];
+        function updateMarketPrices() {
+            const pricesContainer = document.getElementById('marketPrices');
+            pricesContainer.innerHTML = '<h6>Current Market Prices (per kg)</h6>';
+            crops.forEach(crop => {
+                const price = (Math.random() * (100 - 10) + 10).toFixed(2);
+                pricesContainer.innerHTML += `<p>${crop}: KES ${price}</p>`;
+            });
+        }
+
+        // Farming tips
+        const farmingTips = [
+            "Regularly test your soil to ensure optimal nutrient levels.",
+            "Implement integrated pest management to reduce reliance on pesticides.",
+            "Use cover crops to improve soil health and prevent erosion.",
+            "Practice proper irrigation techniques to conserve water.",
+            "Diversify your crops to reduce risk and improve soil health.",
+            "Keep detailed records of your farming activities for better decision-making.",
+            "Invest in quality seeds and planting materials for better yields.",
+            "Regularly maintain and clean your farming equipment.",
+            "Consider using mulch to retain soil moisture and suppress weeds.",
+            "Participate in agricultural training programs to stay updated on best practices."
+        ];
+
+        function showRandomTip() {
+            const tipContainer = document.getElementById('farmingTips');
+            const randomTip = farmingTips[Math.floor(Math.random() * farmingTips.length)];
+            tipContainer.innerHTML = `<p>${randomTip}</p>`;
+        }
+
+        // Event listeners and initial function calls
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWeather();
+            loadBlogPosts();
+            loadEvents();
+            updateMarketPrices();
+            showRandomTip();
+
+            // Refresh weather every 5 minutes
+            setInterval(updateWeather, 300000);
+
+            // Refresh market prices every 15 minutes
+            setInterval(updateMarketPrices, 900000);
+
+            // Load more blogs button
+            document.getElementById('loadMoreBlogs').addEventListener('click', function() {
+                const blogContainer = document.getElementById('blogPosts');
+                blogPosts.slice(3).forEach(post => {
+                    blogContainer.innerHTML += `
+                        <div class="blog-post">
+                            <h6>${post.title}</h6>
+                            <p>${post.excerpt}</p>
+                            <a href="#" class="btn btn-sm btn-outline-success">Read More</a>
+                        </div>
+                    `;
+                });
+                this.style.display = 'none';
+            });
+
+            // New farming tip button
+            document.getElementById('newTip').addEventListener('click', showRandomTip);
+        });
+    </script>
+</body>
+</html>

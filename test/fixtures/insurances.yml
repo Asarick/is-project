@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  farmer: one
+  crop: one
+  insurance_package: one
+  premium_type: one
+  acreage: 9.99
+  total_premium: 9.99
+  start_date: 2024-06-27
+  end_date: 2024-06-27
+  policy_number: MyString
+
+two:
+  farmer: two
+  crop: two
+  insurance_package: two
+  premium_type: two
+  acreage: 9.99
+  total_premium: 9.99
+  start_date: 2024-06-27
+  end_date: 2024-06-27
+  policy_number: MyString
